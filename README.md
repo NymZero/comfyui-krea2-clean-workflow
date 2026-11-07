@@ -56,6 +56,8 @@ The author also uses **krea2TurboFP8** (approximately **12 GB**), a Qwen3-VL 4B 
 
 Model weights are not included in this repository. Obtain compatible weights from their publishers and follow their model cards. Different quantizations and model variants may need different runtime support and settings.
 
+Anyone downloading or using Krea 2 weights must read and comply with the [Krea 2 Community License Agreement (PDF)](https://cdn.jsdelivr.net/gh/krea-ai/krea-2@db3984fbc6e13b34c0064990fc2d95ac64d00058/assets/hf_samples/LICENSE.pdf). The model weights are governed by that agreement separately from this repository's MIT license.
+
 ### Custom nodes
 
 | Package | Nodes used | Role in this export |
@@ -168,6 +170,10 @@ docs/images/
 ```
 
 These are proposed filenames, not files currently included in the repository. When adding examples, record the model and quantization, LoRA names and strengths, prompts, both seeds, resolution, and relevant sampler settings. Label base, Krea-refined, and any future SeedVR2 examples separately.
+
+## License
+
+The workflow and documentation in this repository are released under the [MIT License](LICENSE), copyright © 2026 NymZero. Model weights and third-party custom nodes remain subject to their respective licenses.
 
 ## Verification scope
 
