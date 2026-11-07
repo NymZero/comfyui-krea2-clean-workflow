@@ -157,19 +157,31 @@ These are practical reference observations, not universal benchmarks or measurem
 
 Consult its model card for the supported base model, trigger words, and recommended strength before selecting it in the loaders. The export's local `K2_Iris_KSC_9.safetensors` filename is not proof that it matches a particular public Iris V2 file. The model card and weights were not independently inspected during this documentation pass; end-to-end compatibility has not been tested here.
 
-## Example images
+## Workflow screenshots
 
-Example images and workflow screenshots have not been added yet. A suggested layout for future assets is:
+These screenshots show the canvas layout and controls. Model and LoRA selections shown in the interface may differ from the saved JSON; select your own compatible files as described above.
 
-```text
-docs/images/
-├── workflow-overview.png
-├── base-example.png
-├── krea-refined-example.png
-└── base-vs-refined.png
-```
+### Full workflow
 
-These are proposed filenames, not files currently included in the repository. When adding examples, record the model and quantization, LoRA names and strengths, prompts, both seeds, resolution, and relevant sampler settings. Label base, Krea-refined, and any future SeedVR2 examples separately.
+![Full ComfyUI workflow showing model loading, generation, Krea refinement, the SeedVR2 branch, and the comparison area](docs/images/workflow-overview.png)
+
+Overview of the workflow groups and their connections, including the separate SeedVR2 branch.
+
+### Model loading and generation
+
+![Detail of the Initial Loader, Power LoRA Loader, conditioning controls, generation sampler, and group toggles](docs/images/generation-details.png)
+
+The generation section brings together model selection, LoRA loading, conditioning, sampler settings, and the Options group controls.
+
+### Upscale branches
+
+![Detail of the Krea resize and refinement group and the separate SeedVR2 model loaders and upscaler](docs/images/upscale-branches.png)
+
+The Krea path uses a 1.5× bilinear resize and low-denoise refinement. The separate SeedVR2 branch uses its own DiT and VAE models and is muted by default in the supplied JSON.
+
+## Generated image examples
+
+Generated image examples have not been added yet. When adding examples, record the model and quantization, LoRA names and strengths, prompts, both seeds, resolution, and relevant sampler settings. Label base, Krea-refined, and any future SeedVR2 examples separately.
 
 ## License
 
