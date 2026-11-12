@@ -27,7 +27,7 @@ Krea 2 generation → VAE decode → ImageScaleBy (bilinear, 1.5×)
 
 At the saved base resolution of **1280 × 1728**, the resize produces **1920 × 2592** before refinement. Both samplers receive the diffusion model from the same `Initial Loader`, through their own LoRA loaders. No additional diffusion checkpoint is needed for this path.
 
-This is a quality/speed tradeoff. It is not a claim of maximum reconstruction quality or superiority to dedicated upscalers such as SeedVR2.
+This is a quality/speed tradeoff. It is not a claim of maximum reconstruction quality or superiority to dedicated upscalers such as [SeedVR / SeedVR2](https://github.com/ByteDance-Seed/SeedVR).
 
 The separate `SeedVR2 Upscale` branch receives the **base decoded image**, rather than the output of the Krea refinement pass. Its model loaders, upscaler, and save node are muted in the export (`mode: 2`). A connected `FastFilmGrain` node is bypassed (`mode: 4`). The comparer is not connected to SeedVR2 output.
 
@@ -66,7 +66,7 @@ Anyone downloading or using Krea 2 weights must read and comply with the [Krea 2
 | [ComfyUI-Easy-Use](https://github.com/yolain/ComfyUI-Easy-Use) | `easy setNode`, `easy getNode` | Shared MODEL, CLIP, and VAE routing |
 | [nova452's conditioning nodes](https://github.com/nova452/ComfyUI-ConditioningKrea2Rebalance), now documented as [Rebalance-Pack](https://github.com/nova452/Rebalance-Pack) | `ConditioningKrea2Rebalance` | Generation conditioning adjustment |
 | [Santodan's revived metadata extension](https://github.com/Santodan/revived_comfyui_image_metadata_extension) | `SaveImageWithMetaData` | Image saving with metadata |
-| [ComfyUI-SeedVR2_VideoUpscaler](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler) | `SeedVR2LoadDiTModel`, `SeedVR2LoadVAEModel`, `SeedVR2VideoUpscaler` | Additional branch, muted by default |
+| [SeedVR / SeedVR2 (official project)](https://github.com/ByteDance-Seed/SeedVR), via the [ComfyUI integration](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler) | `SeedVR2LoadDiTModel`, `SeedVR2LoadVAEModel`, `SeedVR2VideoUpscaler` | Additional branch, muted by default |
 | [VRGDG nodes recorded in the export](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl), with utility nodes now in [VRGDG Custom Node Pack](https://github.com/vrgamegirl19/VRGDG_CustomNodePack) | `FastFilmGrain` | Bypassed node after SeedVR2 |
 
 SeedVR2 and FastFilmGrain are additional dependencies present in V2.2 beyond the original four-package list. Their processing is not needed for the main path, but their node definitions may still be needed to load the complete canvas without missing-node placeholders.
@@ -104,7 +104,7 @@ The save nodes use timestamp-based prefixes and `metadata_scope: full`. The comp
 
 ### Separate SeedVR2 branch
 
-Keep this branch muted for the lightweight workflow. If you choose to use it, follow the SeedVR2 package's installation and hardware guidance first. The saved branch selects:
+Keep this branch muted for the lightweight workflow. The official model project is [SeedVR](https://github.com/ByteDance-Seed/SeedVR); the workflow's nodes are provided by the separate [ComfyUI integration](https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler). If you choose to use this branch, follow that integration's installation and hardware guidance first. The saved branch selects:
 
 - DiT: `seedvr2_ema_7b_sharp_fp16.safetensors`
 - VAE: `ema_vae_fp16.safetensors`
